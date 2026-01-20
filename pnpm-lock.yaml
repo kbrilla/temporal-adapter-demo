@@ -497,11 +497,11 @@ packages:
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
 
   '@angular/material-temporal-adapter@file:vendor/angular-material-temporal-adapter.tgz':
-    resolution: {integrity: sha512-UiDTHEY81dSt97Ozo1bAVUMfp7Jlg/rPMtSrYSa1oYz1Qs454zDnyV/gOZEOX8jROWjAtcSeiVTCK6ktPxndug==, tarball: file:vendor/angular-material-temporal-adapter.tgz}
-    version: 0.0.0
+    resolution: {integrity: sha512-Iyho9V48U0i7DsHTAhlzHVyBedrDtP7yfsd1BlAgh5AVU4Ar2Zooa+04zKlKzm1t04cLkx9YrGNswwdj3XO0SQ==, tarball: file:vendor/angular-material-temporal-adapter.tgz}
+    version: 21.2.0-next.0
     peerDependencies:
-      '@angular/core': '>=0.0.0'
-      '@angular/material': 0.0.0
+      '@angular/core': ^21.0.0-0 || ^21.1.0-0 || ^21.2.0-0 || ^21.3.0-0 || ^22.0.0-0
+      '@angular/material': 21.2.0-next.0+sha-335f340
 
   '@angular/material@file:vendor/angular-material.tgz':
     resolution: {integrity: sha512-xTFdORZbUNpiC7Ae8ccClCIReuviUG7znu4q5o+B3qaLNs/QPlqB4hJKzrO8p6KM9utj6aA9qmbuwVt3P9S3gA==, tarball: file:vendor/angular-material.tgz}

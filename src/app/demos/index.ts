@@ -2,3 +2,8 @@ export * from './datepicker-demo.component';
 export * from './calendar-demo.component';
 export * from './daterange-demo.component';
 export * from './timepicker-demo.component';
+export * from './adapter-test-suite.component';
+export * from './edge-cases-test.component';
+export * from './adapter-explorer.component';
+export * from './japanese-calendar-debug.component';
+export * from './matrix-test-suite.component';

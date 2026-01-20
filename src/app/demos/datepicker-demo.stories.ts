@@ -114,6 +114,7 @@ export const JapaneseCalendar: Story = {
   decorators: [
     applicationConfig({
       providers: [
+        provideAnimationsAsync(),
         provideTemporalDateAdapter(undefined, { calendar: 'japanese' }),
       ],
     }),
