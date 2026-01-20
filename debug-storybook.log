@@ -1,0 +1,22 @@
+[11:08:21.001] [INFO] [36mInitializing Storybook[39m
+[11:08:21.187] [DEBUG] Getting package.json info for /Users/krzbri/repos/temporal-adapter-demo/package.json...
+[11:08:21.187] [DEBUG] Getting CLI versions from NPM for storybook...
+[11:08:21.187] [DEBUG] Executing command: pnpm info storybook version
+[11:08:21.799] [INFO] Adding Storybook version 10.1.11 to your project
+[11:08:21.800] [INFO] Installing Storybook for user specified project type: angular
+[11:08:21.801] [INFO] Framework detected: angular
+[11:08:21.801] [DEBUG] Getting installed version for vitest...
+[11:08:21.801] [DEBUG] Executing command: pnpm list "vitest" --json --depth=99
+[11:08:22.011] [DEBUG] Getting installed version for msw...
+[11:08:22.011] [DEBUG] Executing command: pnpm list "msw" --json --depth=99
+[11:08:30.883] [PROMPT] New to Storybook? {"choice":true}
+[11:08:31.816] [ERROR] [38;2;241;97;97mError: Every project in your workspace is already set up with Storybook. There is nothing to do![39m
+    at Object.configure (file:///Users/krzbri/.npm/_npx/96f9239703459233/node_modules/create-storybook/dist/_node-chunks/chunk-C75MJVFW.js:1726:13)
+    at GeneratorExecutionCommand.executeProjectGenerator (file:///Users/krzbri/.npm/_npx/96f9239703459233/node_modules/create-storybook/dist/_node-chunks/chunk-C75MJVFW.js:1318:80)
+    at GeneratorExecutionCommand.execute (file:///Users/krzbri/.npm/_npx/96f9239703459233/node_modules/create-storybook/dist/_node-chunks/chunk-C75MJVFW.js:1367:38)
+    at executeGeneratorExecution (file:///Users/krzbri/.npm/_npx/96f9239703459233/node_modules/create-storybook/dist/_node-chunks/chunk-C75MJVFW.js:1384:74)
+    at doInitiate (file:///Users/krzbri/.npm/_npx/96f9239703459233/node_modules/create-storybook/dist/_node-chunks/chunk-C75MJVFW.js:2279:74)
+    at async file:///Users/krzbri/.npm/_npx/96f9239703459233/node_modules/create-storybook/dist/_node-chunks/chunk-C75MJVFW.js:2322:20
+    at async withTelemetry (file:///Users/krzbri/.npm/_npx/96f9239703459233/node_modules/storybook/dist/_node-chunks/chunk-2372JZ52.js:209:12)
+    at async initiate (file:///Users/krzbri/.npm/_npx/96f9239703459233/node_modules/create-storybook/dist/_node-chunks/chunk-C75MJVFW.js:2315:24)
+    at async _Command.<anonymous> (file:///Users/krzbri/.npm/_npx/96f9239703459233/node_modules/create-storybook/dist/_node-chunks/run-TKNEFAFQ.js:2683:144)

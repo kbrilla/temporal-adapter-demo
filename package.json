@@ -5,17 +5,24 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "storybook": "ng run temporal-adapter-demo:storybook",
+    "build-storybook": "ng run temporal-adapter-demo:build-storybook"
   },
   "private": true,
   "dependencies": {
+    "@angular/animations": "^21.1.0",
+    "@angular/cdk": "file:vendor/angular-cdk.tgz",
     "@angular/common": "~21.0.0",
     "@angular/compiler": "~21.0.0",
     "@angular/core": "~21.0.0",
     "@angular/forms": "~21.0.0",
+    "@angular/material": "file:vendor/angular-material.tgz",
+    "@angular/material-temporal-adapter": "file:vendor/angular-material-temporal-adapter.tgz",
     "@angular/platform-browser": "~21.0.0",
     "@angular/router": "~21.0.0",
-    "rxjs": "~7.8.0"
+    "rxjs": "~7.8.0",
+    "temporal-polyfill": "^0.3.0"
   },
   "devDependencies": {
     "@angular-devkit/core": "~21.0.0",
@@ -29,9 +36,12 @@
     "@nx/eslint": "22.3.3",
     "@nx/eslint-plugin": "22.3.3",
     "@nx/js": "22.3.3",
+    "@nx/storybook": "^22.3.3",
     "@nx/web": "22.3.3",
     "@nx/workspace": "22.3.3",
     "@schematics/angular": "~21.0.0",
+    "@storybook/addon-docs": "^10.1.11",
+    "@storybook/angular": "^10.1.11",
     "@swc-node/register": "~1.9.1",
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
@@ -39,8 +49,10 @@
     "angular-eslint": "^21.0.1",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^10.0.0",
+    "eslint-plugin-storybook": "10.1.11",
     "nx": "22.3.3",
     "prettier": "~3.6.2",
+    "storybook": "^10.1.11",
     "tslib": "^2.3.0",
     "typescript": "~5.9.2",
     "typescript-eslint": "^8.40.0"
