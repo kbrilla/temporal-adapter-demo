@@ -7,3 +7,4 @@ export * from './edge-cases-test.component';
 export * from './adapter-explorer.component';
 export * from './japanese-calendar-debug.component';
 export * from './matrix-test-suite.component';
+export * from './master-playground.component';
