@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { applicationConfig } from '@storybook/angular';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideTemporalDateAdapter, TemporalAdapterOptions } from '@angular/material-temporal-adapter';
+import { provideTemporalDateAdapter, MatTemporalDateAdapterOptions } from '@angular/material-temporal-adapter';
 import { MatrixTestSuiteComponent } from './matrix-test-suite.component';
 
 import 'temporal-polyfill/global';
@@ -33,7 +33,7 @@ type Story = StoryObj<MatrixTestSuiteComponent>;
 // Helper to create stories concise
 function createStory(
   name: string, 
-  options: Partial<TemporalAdapterOptions>, 
+  options: Partial<MatTemporalDateAdapterOptions>, 
   description?: string
 ): Story {
   return {
@@ -126,9 +126,8 @@ export const Option_WeekStart_Sat = createStory('Option: Week Start Sat',
   { calendar: 'gregory', firstDayOfWeek: 6 }
 );
 
-export const Option_Round_Hour = createStory('Option: Round to Hour', 
-  { calendar: 'iso8601', mode: 'datetime', round: { smallestUnit: 'hour' } as any } 
-  // Cast needed if types mismatch in demo
+export const Option_Round_Hour = createStory('Option: Round to Hour (Zoned)', 
+  { calendar: 'iso8601', mode: 'zoned', timezone: 'UTC', rounding: { smallestUnit: 'hour' } }
 );
 
 // ==================================================================
