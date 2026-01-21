@@ -8,3 +8,4 @@ export * from './adapter-explorer.component';
 export * from './japanese-calendar-debug.component';
 export * from './matrix-test-suite.component';
 export * from './playground.component';
+export * from './material-examples.component';
