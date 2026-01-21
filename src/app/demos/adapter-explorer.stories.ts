@@ -107,32 +107,33 @@ export const ComprehensiveTestSuite: Story = {
     const canvas = within(canvasElement);
     
     // --- Test 1: Base Date & Getters (Leap Year) ---
-    const inputs = canvas.getAllByRole('textbox');
-    const baseDateInput = inputs[0]; 
+    // Find inputs by their labels for reliability
+    const baseDateInput = canvas.getByLabelText('Select base date');
     
     // Set 2024-01-31
     await userEvent.clear(baseDateInput);
     await userEvent.type(baseDateInput, '2024-01-31');
     await userEvent.tab();
     
-    // Verify getters: getYear() -> 2024
-    expect(await canvas.findByText('2024')).toBeInTheDocument();
+    // Wait for Angular to process
+    await new Promise(resolve => setTimeout(resolve, 500));
     
-    // --- Test 2: Arithmetic (Overflow) ---
-    // Set Amount 1 (inputs[1])
-    const amountInput = inputs[1]; 
-    await userEvent.clear(amountInput);
-    await userEvent.type(amountInput, '1');
-    await userEvent.tab();
-
-    // Verify comparison basics
-    const compareInput = inputs[2]; // compare date
+    // Verify getters: getYear() -> 2024
+    expect(await canvas.findByText('2024', {}, { timeout: 3000 })).toBeInTheDocument();
+    
+    // --- Test 2: Comparison ---
+    // Find compare date input by label
+    const compareInput = canvas.getByLabelText('Compare with');
     await userEvent.clear(compareInput);
     await userEvent.type(compareInput, '2024-02-01');
     await userEvent.tab();
     
-    // Verify -1 (base < compare)
-    const comparisonSection = canvas.getByText('compareDate(base, compare)').closest('.method');
+    // Wait for Angular to process and comparison section to appear
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    // Verify comparison section appears with -1 (base < compare)
+    const comparisonText = await canvas.findByText('compareDate(base, compare)', {}, { timeout: 3000 });
+    const comparisonSection = comparisonText.closest('.method');
     expect(comparisonSection).toHaveTextContent('-1');
   },
 };

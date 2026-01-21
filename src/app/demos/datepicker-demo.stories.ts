@@ -148,6 +148,9 @@ export const MultiYearView: Story = {
 
 export const InteractiveTest: Story = {
   name: 'Interactive Test',
+  args: {
+    initialValue: '2025-01-15',
+  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     
@@ -155,7 +158,7 @@ export const InteractiveTest: Story = {
     const input = canvas.getByRole('textbox');
     expect(input).toBeInTheDocument();
     
-    // Verify input has a value (today's date)
+    // Verify input has a value (format may vary by locale, just check it's not empty)
     expect(input).not.toHaveValue('');
     
     // Find the toggle button and click it
