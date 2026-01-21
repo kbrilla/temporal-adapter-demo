@@ -39,8 +39,17 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+
       - name: Build Storybook
         run: pnpm run build-storybook
+
+      - name: Test Storybook
+        run: |
+          npx concurrently -k -s first -n "SB,TEST" \
+            "npx http-server dist/storybook -p 6006 --silent" \
+            "npx test-storybook --url http://127.0.0.1:6006"
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

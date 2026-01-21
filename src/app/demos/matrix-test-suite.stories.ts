@@ -3,6 +3,7 @@ import { applicationConfig } from '@storybook/angular';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideTemporalDateAdapter, MatTemporalDateAdapterOptions } from '@angular/material-temporal-adapter';
 import { MatrixTestSuiteComponent } from './matrix-test-suite.component';
+import { expect, within } from '@storybook/test';
 
 import 'temporal-polyfill/global';
 
@@ -47,6 +48,24 @@ function createStory(
         ],
       }),
     ],
+    play: async ({ canvasElement }) => {
+      const canvas = within(canvasElement);
+      // Wait for tests to run (setTimeout 100ms in component)
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      const statusElement = await canvas.findByText(/Passed/i);
+      await expect(statusElement).toBeInTheDocument();
+      
+      // Specifically check for 'All Passed' or 100% success indication if possible
+      // The text is "X/Y tests passed" and "✓ All Passed"
+      
+      const allPassed = await canvas.findByText('✓ All Passed').catch(() => null);
+      if (!allPassed) {
+        // If not all passed, find the failed ones to report (optional, but good for debugging)
+         throw new Error('Test suite did not pass all tests!');
+      }
+      await expect(allPassed).toBeInTheDocument();
+    }
   };
 }
 
