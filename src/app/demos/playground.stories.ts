@@ -5,29 +5,65 @@ import { PlaygroundComponent } from './playground.component';
 
 import 'temporal-polyfill/global';
 
+const calendars = [
+  'iso8601', 'gregory', 'japanese', 'hebrew', 'chinese', 
+  'persian', 'buddhist', 'indian', 'ethiopic', 'coptic'
+];
+
 const meta: Meta<PlaygroundComponent> = {
   title: 'Demos/Playground',
   component: PlaygroundComponent,
   parameters: {
-    layout: 'fullscreen',
+    layout: 'padded',
     docs: {
       description: {
         component: `
-# Playground
+# Interactive Playground
 
-A dynamic playground that allows re-configuring the **TemporalDateAdapter** at runtime.
-
-Use the side panel to change:
-- Calendar System
-- Output Calendar
-- Mode (Date/DateTime/Zoned)
-- Locale
-- Timezone
-- First Day of Week
-
-The playground uses a **Child Injector** pattern to re-instantiate the components with a fresh adapter configuration.
+Use the **Controls** panel below (or on the right) to configure the Temporal Adapter dynamically.
+You can mix and match:
+- **Calendar Systems**
+- **Modes** (Date, DateTime, Zoned)
+- **Locales**
         `,
       },
+    },
+  },
+  args: {
+    calendar: 'iso8601',
+    mode: 'date',
+    locale: 'en-US',
+    timezone: 'UTC',
+  },
+  argTypes: {
+    calendar: {
+      control: 'select',
+      options: calendars,
+      description: 'Internal calendar for date calculations',
+    },
+    outputCalendar: {
+      control: 'select',
+      options: [undefined, ...calendars],
+      description: 'Optional output calendar for display',
+    },
+    mode: {
+      control: 'radio',
+      options: ['date', 'datetime', 'zoned'],
+      description: 'Adapter mode',
+    },
+    locale: {
+      control: 'text',
+      description: 'BCP 47 locale string',
+    },
+    timezone: {
+      control: 'text',
+      if: { arg: 'mode', eq: 'zoned' },
+      description: 'Timezone (only for zoned mode)',
+    },
+    firstDayOfWeek: {
+      control: 'select',
+      options: [undefined, 0, 1, 6],
+      description: 'Override first day of week (0=Sun)',
     },
   },
   decorators: [
@@ -42,6 +78,6 @@ The playground uses a **Child Injector** pattern to re-instantiate the component
 export default meta;
 type Story = StoryObj<PlaygroundComponent>;
 
-export const Default: Story = {
+export const Interactive: Story = {
   name: '🛠️ Interactive Playground',
 };
