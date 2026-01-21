@@ -40,6 +40,8 @@
     "@nx/storybook": "^22.3.3",
     "@nx/web": "22.3.3",
     "@nx/workspace": "22.3.3",
+    "@rspack/cli": "^1.7.3",
+    "@rspack/core": "^1.7.3",
     "@schematics/angular": "~21.0.0",
     "@storybook/addon-docs": "^10.1.11",
     "@storybook/angular": "^10.1.11",
@@ -50,6 +52,7 @@
     "@swc/helpers": "~0.5.11",
     "@typescript-eslint/utils": "^8.40.0",
     "angular-eslint": "^21.0.1",
+    "concurrently": "^9.2.1",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^10.0.0",
     "eslint-plugin-storybook": "10.1.11",
@@ -58,7 +61,8 @@
     "storybook": "^10.1.11",
     "tslib": "^2.3.0",
     "typescript": "~5.9.2",
-    "typescript-eslint": "^8.40.0"
+    "typescript-eslint": "^8.40.0",
+    "wait-on": "^9.0.3"
   },
   "nx": {
     "includedScripts": []

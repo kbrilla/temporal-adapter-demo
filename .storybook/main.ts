@@ -7,7 +7,11 @@ const config: StorybookConfig = {
   addons: [getAbsolutePath("@storybook/addon-docs")],
   framework: {
     name: getAbsolutePath("@storybook/angular"),
-    options: {},
+    options: {
+      builder: {
+        useRspack: true,
+      },
+    },
   },
   docs: {},
   staticDirs: ['../public'],
