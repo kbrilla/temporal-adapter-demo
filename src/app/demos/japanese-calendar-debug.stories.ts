@@ -8,7 +8,7 @@ import { JapaneseCalendarDebugComponent } from './japanese-calendar-debug.compon
 import 'temporal-polyfill/global';
 
 const meta: Meta<JapaneseCalendarDebugComponent> = {
-  title: 'Debug/Japanese Calendar',
+  title: 'Tests/Regression: Japanese Calendar',
   component: JapaneseCalendarDebugComponent,
   parameters: {
     docs: {

@@ -9,7 +9,7 @@ import { within, userEvent, expect } from 'storybook/test';
 import 'temporal-polyfill/global';
 
 const meta: Meta<AdapterExplorerComponent> = {
-  title: 'Demos/Adapter Explorer',
+  title: 'Tests/Explorer',
   component: AdapterExplorerComponent,
   decorators: [
     applicationConfig({
@@ -21,6 +21,16 @@ const meta: Meta<AdapterExplorerComponent> = {
   ],
   parameters: {
     layout: 'fullscreen',
+    docs: {
+      description: {
+        component: `
+# Adapter Explorer
+
+An exploratory component to test basic adapter functionality.
+Consider using the **Master Playground** for a more comprehensive interactive experience.
+        `,
+      },
+    },
   },
 };
 

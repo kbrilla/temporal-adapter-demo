@@ -9,7 +9,7 @@ import { within, userEvent, expect } from 'storybook/test';
 import 'temporal-polyfill/global';
 
 const meta: Meta<AdapterTestSuiteComponent> = {
-  title: 'Tests/Adapter Test Suite',
+  title: 'Tests/Legacy Suite',
   component: AdapterTestSuiteComponent,
   decorators: [
     applicationConfig({

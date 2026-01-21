@@ -18,6 +18,21 @@ const meta: Meta<EdgeCasesTestComponent> = {
       ],
     }),
   ],
+  parameters: {
+    docs: {
+      description: {
+        component: `
+# Edge Cases & Validation
+
+This component tests boundary conditions and error handling:
+- **Null/Undefined values**
+- **Invalid Dates** (e.g. month 99)
+- **Timezone Transitions**
+- **Leap Years**
+        `,
+      },
+    },
+  },
 };
 
 export default meta;

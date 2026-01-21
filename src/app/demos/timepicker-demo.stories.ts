@@ -15,6 +15,7 @@ const meta: Meta<TimepickerDemoComponent> = {
     applicationConfig({
       providers: [
         provideAnimationsAsync(),
+        provideTemporalDateAdapter(MAT_TEMPORAL_DATETIME_FORMATS, { mode: 'datetime' }),
       ],
     }),
   ],
