@@ -1,5 +1,6 @@
 import { Component, Injector, Input, OnChanges, SimpleChanges, ViewChild, ViewContainerRef, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -18,7 +19,9 @@ import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
   selector: 'app-playground-content',
   standalone: true,
   imports: [
-    CommonModule, 
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule, 
     MatDatepickerModule, 
     MatTimepickerModule, 
     MatFormFieldModule, 
@@ -71,6 +74,24 @@ import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
             </mat-form-field>
           </mat-card-content>
         </mat-card>
+
+        <!-- Integrated Picker -->
+        <mat-card *ngIf="isTimeSupported()">
+          <mat-card-header><mat-card-title>Integrated Date & Time</mat-card-title></mat-card-header>
+          <mat-card-content>
+            <mat-form-field>
+              <mat-label>Date & Time</mat-label>
+              <input matInput [matDatepicker]="dpCombined" [matTimepicker]="tpCombined" [formControl]="combinedControl">
+              <mat-datepicker-toggle matIconSuffix [for]="dpCombined"></mat-datepicker-toggle>
+              <mat-timepicker-toggle matIconSuffix [for]="tpCombined"></mat-timepicker-toggle>
+              <mat-datepicker #dpCombined></mat-datepicker>
+              <mat-timepicker #tpCombined></mat-timepicker>
+            </mat-form-field>
+            <div class="debug-val" style="margin-top: 8px;">
+              <small style="color: #666">Value: {{ combinedControl.value?.toString() }}</small>
+            </div>
+          </mat-card-content>
+        </mat-card>
       </div>
 
       <div class="adapter-info">
@@ -87,6 +108,7 @@ import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 })
 export class PlaygroundContentComponent {
   adapter = inject(DateAdapter) as any;
+  combinedControl = new FormControl<any>(null);
 
   isTimeSupported() {
     const mode = this.adapter.customOptions?.mode;
