@@ -53,16 +53,16 @@ function createStory(
       // Wait for tests to run (setTimeout 100ms in component)
       await new Promise(resolve => setTimeout(resolve, 500));
       
-      const statusElement = await canvas.findByText(/Passed/i);
-      await expect(statusElement).toBeInTheDocument();
-      
-      // Specifically check for 'All Passed' or 100% success indication if possible
-      // The text is "X/Y tests passed" and "✓ All Passed"
-      
+      // Check for 'All Passed' status - using a more specific selector
       const allPassed = await canvas.findByText('✓ All Passed').catch(() => null);
       if (!allPassed) {
-        // If not all passed, find the failed ones to report (optional, but good for debugging)
-         throw new Error('Test suite did not pass all tests!');
+        // If not all passed, find the score to report
+        const scoreElement = canvasElement.querySelector('.score');
+        const failedTests = canvasElement.querySelectorAll('.test-item.failed');
+        const failedNames = Array.from(failedTests).map(el => 
+          el.querySelector('.test-name')?.textContent || 'unknown'
+        ).slice(0, 5); // First 5 failures
+        throw new Error(`Test suite did not pass all tests! Score: ${scoreElement?.textContent?.trim() || 'unknown'}. Failed: ${failedNames.join(', ')}`);
       }
       await expect(allPassed).toBeInTheDocument();
     }
