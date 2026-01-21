@@ -1,5 +1,8 @@
 # Temporal Adapter Demo
 
+[![CI](https://github.com/kbrilla/temporal-adapter-demo/actions/workflows/ci.yml/badge.svg)](https://github.com/kbrilla/temporal-adapter-demo/actions/workflows/ci.yml)
+[![Deploy Storybook](https://github.com/kbrilla/temporal-adapter-demo/actions/workflows/storybook.yml/badge.svg)](https://github.com/kbrilla/temporal-adapter-demo/actions/workflows/storybook.yml)
+
 This project demonstrates the **Angular Material Temporal Date Adapter**, which allows using the [TC39 Temporal API](https://tc39.es/proposal-temporal/docs/index.html) (`Temporal.PlainDate`, etc.) with Angular Material components (`mat-datepicker`, `mat-date-range-picker`).
 
 ## 🚀 Live Demo
@@ -59,7 +62,33 @@ To build the Storybook for deployment:
 pnpm run build-storybook
 ```
 
-## 🧪 Matrix Testing
+## 🧪 Testing
+
+### Running Tests Locally
+
+```bash
+# Run Vitest unit tests (fast, ~700ms)
+pnpm test:vitest:run
+
+# Run Vitest in watch mode
+pnpm test:vitest
+
+# Run Storybook interaction tests (requires Storybook running)
+pnpm storybook &          # Start Storybook
+pnpm test-storybook       # Run tests
+
+# Run all tests
+pnpm test:all
+```
+
+### Test Coverage
+
+| Test Suite | Tests | Environment | Purpose |
+|------------|-------|-------------|---------|
+| **Vitest** | 13 | jsdom | Temporal API unit tests |
+| **Storybook** | 300+ | Playwright/Chromium | Component interaction tests |
+
+### Matrix Test Suite
 
 This repository includes a comprehensive **Matrix Test Suite** in Storybook that validates:
 *   **10+ Calendar systems**
