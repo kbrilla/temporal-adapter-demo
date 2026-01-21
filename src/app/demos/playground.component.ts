@@ -131,7 +131,7 @@ export class PlaygroundContentComponent {
 }
 
 @Component({
-  selector: 'app-master-playground',
+  selector: 'app-playground',
   standalone: true,
   imports: [
     CommonModule, 
@@ -251,7 +251,7 @@ export class PlaygroundContentComponent {
     }
   `]
 })
-export class MasterPlaygroundComponent implements OnInit {
+export class PlaygroundComponent implements OnInit {
   calendars: TemporalCalendarId[] = [
     'iso8601', 'gregory', 'japanese', 'hebrew', 'chinese', 
     'persian', 'buddhist', 'indian', 'ethiopic', 'coptic'

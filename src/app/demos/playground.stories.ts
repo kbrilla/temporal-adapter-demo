@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { applicationConfig } from '@storybook/angular';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { MasterPlaygroundComponent } from './master-playground.component';
+import { PlaygroundComponent } from './playground.component';
 
 import 'temporal-polyfill/global';
 
-const meta: Meta<MasterPlaygroundComponent> = {
-  title: 'Demos/Master Playground',
-  component: MasterPlaygroundComponent,
+const meta: Meta<PlaygroundComponent> = {
+  title: 'Demos/Playground',
+  component: PlaygroundComponent,
   parameters: {
     layout: 'fullscreen',
     docs: {
       description: {
         component: `
-# Master Playground
+# Playground
 
 A dynamic playground that allows re-configuring the **TemporalDateAdapter** at runtime.
 
@@ -40,7 +40,7 @@ The playground uses a **Child Injector** pattern to re-instantiate the component
 };
 
 export default meta;
-type Story = StoryObj<MasterPlaygroundComponent>;
+type Story = StoryObj<PlaygroundComponent>;
 
 export const Default: Story = {
   name: '🛠️ Interactive Playground',

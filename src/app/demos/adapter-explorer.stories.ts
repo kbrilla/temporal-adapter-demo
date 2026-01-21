@@ -27,7 +27,7 @@ const meta: Meta<AdapterExplorerComponent> = {
 # Adapter Explorer
 
 An exploratory component to test basic adapter functionality.
-Consider using the **Master Playground** for a more comprehensive interactive experience.
+Consider using the **Playground** for a more comprehensive interactive experience.
         `,
       },
     },
