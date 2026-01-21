@@ -736,10 +736,13 @@ export class MatrixTestSuiteComponent implements OnInit {
     const cat = 'Calendar Specific';
     const config = this.configInfo();
     const calendar = config.calendar.toLowerCase();
+    // Use output calendar for month/display tests, as that's what getMonthNames returns
+    const displayCalendar = (config.outputCalendar || config.calendar).toLowerCase();
 
-    // 13-month calendar tests
-    if (['hebrew', 'ethiopic', 'chinese'].includes(calendar)) {
-      results.push(this.test(cat, `${calendar} calendar can have ≥13 months`, () => {
+    // 13-month calendar tests - only run if the DISPLAY calendar has 13+ months
+    // (not the input calendar, because getMonthNames returns output calendar months)
+    if (['hebrew', 'ethiopic', 'chinese'].includes(displayCalendar)) {
+      results.push(this.test(cat, `${displayCalendar} calendar can have ≥13 months`, () => {
         const months = this.adapter.getMonthNames('long');
         const has13Plus = months.length >= 13;
         return { 
